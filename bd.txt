@@ -1,0 +1,24 @@
+create table clientes (idClientes int not null auto_increment,
+					 contrasenia varchar(10) not null, 
+					 nombre varchar(45) not null, 
+					 apellidoPaterno varchar(45) not null,
+					 apellidoMaterno varchar(45) not null, 
+					 numeroTelefonico varchar(45) not null,
+					 calle varchar(45) not null, 
+					 colonia varchar(45) not null, 
+					 numero int not null,
+					 primary key(idCliente)
+			 ); 
+create table cuenta(idCuenta bigint not null, 
+					balance double null, 
+					primary key(idCuenta),
+					references clientes(idClientes)
+			  ); 
+create table operacionescuenta( idOperaciones bigint not null, 
+							   fechaOperacion date null, 
+							   tipoDeMovimiento char null
+							   cantidad double null, 
+							   primary key(idOperaciones)
+							   references cuenta(idCuenta)
+							   ); 
+							   
