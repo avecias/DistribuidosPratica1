@@ -21,4 +21,12 @@ create table operacionescuenta( idOperaciones bigint not null,
 							   primary key(idOperaciones)
 							   references cuenta(idCuenta)
 							   ); 
+
+
+tarea reporte de kextura
+Sincronización de relojkes
+http://www.asuncionez.com.mx/dds
+Practica1
+max = equipo de 3 pesosinas
+Min 1 persona Fecha Entrega 10 Marzo 
 							   
