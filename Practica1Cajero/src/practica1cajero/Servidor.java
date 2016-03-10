@@ -24,7 +24,7 @@ import javax.swing.JOptionPane;
 public class Servidor {
 
     String user = "root";
-    String pass = "n0m3l0s3";
+    String pass = "1234";
     String operacion = "";
     int res;
     double monto;
@@ -187,7 +187,7 @@ public class Servidor {
             try (java.sql.Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/banco", user, pass)) {
                 Statement comando = (Statement) conexion.createStatement();
                 System.out.println(cuenta);
-                ResultSet registro = comando.executeQuery("select balance from cliente,cuenta where cliente.idcliente=cuenta.idclientes and cuenta.idcuenta=" + cuenta);
+                ResultSet registro = comando.executeQuery("select balance from cliente,cuenta where cliente.idclientes=cuenta.idclientes and cuenta.idcuenta=" + cuenta);
                 if (registro.next() == true) {
                     saldo = registro.getDouble("balance");
                     res = 1;
@@ -206,7 +206,7 @@ public class Servidor {
         java.sql.Date fechaActual = new java.sql.Date(date.getTime());
 
         Class.forName("com.mysql.jdbc.Driver");
-        java.sql.Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/banco", user, pass);
+        java.sql.Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/banco", user, pass);
         Statement st = (Statement) conexion.createStatement();
         st.executeUpdate("INSERT INTO operacionescuenta (idcuenta, fechaoperacion, tipomovimiento,cantidad) "
                 + "VALUES ('" + cuenta + "','" + fechaActual + "','" + operacion + "','" + monto + "' )");

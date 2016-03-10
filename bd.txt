@@ -1,26 +1,38 @@
-create table clientes (idClientes int not null auto_increment,
-					 contrasenia varchar(10) not null, 
-					 nombre varchar(45) not null, 
-					 apellidoPaterno varchar(45) not null,
-					 apellidoMaterno varchar(45) not null, 
-					 numeroTelefonico varchar(45) not null,
-					 calle varchar(45) not null, 
-					 colonia varchar(45) not null, 
-					 numero int not null,
-					 primary key(idCliente)
-			 ); 
-create table cuenta(idCuenta bigint not null, 
-					balance double null, 
-					primary key(idCuenta),
-					references clientes(idClientes)
-			  ); 
-create table operacionescuenta( idOperaciones bigint not null, 
-							   fechaOperacion date null, 
-							   tipoDeMovimiento char null
-							   cantidad double null, 
-							   primary key(idOperaciones)
-							   references cuenta(idCuenta)
-							   ); 
+create database banco; 
+use banco; 
+
+create table cliente (idclientes int not null auto_increment,
+					            contrasenia varchar(10)  null, 
+					            nombre varchar(45)  null, 
+					            apellidopaterno varchar(45)  null,
+					            apellidomaterno varchar(45)  null, 
+					            numerotelefonico varchar(45)  null,
+					            calle varchar(45)  null, 
+					            colonia varchar(45)  null, 
+					            numero int  null,
+					            primary key(idclientes)
+			          ); 
+			          
+insert into cliente values(null,"esedecks","Ariel", "Adauta", "Garcia", "2223112", "LagoAnahuac", "Pensil", 10); 
+insert into cliente values(null,"1234","Otro cliente", "A", "G", "1", "Lago", "Pen", 1); 
+
+create table cuenta(idcuenta int not null auto_increment, 
+balance double null,
+idclientes int null, 
+primary key(idCuenta), 
+foreign key (idclientes) references cliente(idclientes)
+);
+
+insert into cuenta values(null, 100.23, 1); 
+ insert into cuenta values(null, 1000, 2); 
+create table operacionescuenta( idoperaciones int not null auto_increment, 
+idcuenta int not null, 
+fechaoperacion date null, 
+tipomovimiento varchar(40) null,
+cantidad double null, 
+primary key(idoperaciones),
+foreign key(idcuenta) references cuenta(idcuenta)
+); 
 
 
 tarea reporte de kextura

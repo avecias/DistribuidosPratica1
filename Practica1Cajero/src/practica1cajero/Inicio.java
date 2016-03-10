@@ -119,8 +119,8 @@ public class Inicio extends javax.swing.JFrame {
     boolean validarUsuario(String elUsr, String elPw) throws IOException {
         try {
 
-            Connection unaConexion = DriverManager.getConnection("jdbc:mysql://localhost/banco", "root", "n0m3l0s3");
-            // Preparamos la consulta
+            Connection unaConexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/banco", "root", "1234");
+            // Preparamos la consulta   
             Statement instruccionSQL = unaConexion.createStatement();
             ResultSet resultadosConsulta = instruccionSQL.executeQuery("SELECT * FROM cliente,cuenta WHERE cuenta.idclientes='" + elUsr + "' AND cuenta.idcuenta='" + elPw + "'");
 
