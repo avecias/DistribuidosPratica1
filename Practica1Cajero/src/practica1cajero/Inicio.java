@@ -119,17 +119,14 @@ public class Inicio extends javax.swing.JFrame {
     boolean validarUsuario(String elUsr, String elPw) throws IOException {
         try {
 
-            Connection unaConexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/banco", "root", "1234");
+            Connection unaConexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/banco", "root", "avecias");
             // Preparamos la consulta   
             Statement instruccionSQL = unaConexion.createStatement();
             ResultSet resultadosConsulta = instruccionSQL.executeQuery("SELECT * FROM cliente,cuenta WHERE cuenta.idclientes='" + elUsr + "' AND cuenta.idcuenta='" + elPw + "'");
 
-            if (resultadosConsulta.first()) // si es valido el primer reg. hay una fila, tons el usuario y su pw existen
-            {
-                return true;        //usuario validado correctamente
-            } else {
-                return false;        //usuario validado incorrectamente
-            }
+            return resultadosConsulta.first(); // si es valido el primer reg. hay una fila, tons el usuario y su pw existen
+            //usuario validado correctamente
+            //usuario validado incorrectamente
         } catch (Exception e) {
             e.printStackTrace();
             return false;

@@ -24,7 +24,7 @@ import javax.swing.JOptionPane;
 public class Servidor {
 
     String user = "root";
-    String pass = "1234";
+    String pass = "avecias";
     String operacion = "";
     int res;
     double monto;
