@@ -38,7 +38,7 @@ public class Cliente extends javax.swing.JFrame  {
      */
     public Cliente() {
         initComponents();
-        this.ajusta();
+        //ajusta();
         this.setLocationRelativeTo(null);
         this.cancelar();
         lcd.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -196,12 +196,9 @@ public class Cliente extends javax.swing.JFrame  {
         getContentPane().add(lcd, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 270, 50));
 
         lfondo.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        getContentPane().add(lfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 460, 360));
-
-        jLabel8.setIcon(new javax.swing.ImageIcon("/Users/Kevin/Downloads/gris-hq-fondo-puntos-texturas-pantalla-ancha-im-genes-hd-y-461303.jpg")); // NOI18N
+        lfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/2.jpg"))); // NOI18N
+        getContentPane().add(lfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 350, 250));
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 310, 360));
-
-        jLabel7.setIcon(new javax.swing.ImageIcon("/Users/Kevin/Downloads/gris-hq-fondo-puntos-texturas-pantalla-ancha-im-genes-hd-y-461303.jpg")); // NOI18N
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 350, 360));
 
         pack();
@@ -233,7 +230,7 @@ public class Cliente extends javax.swing.JFrame  {
         if (lcd.getText().length() > 0) {
 
             if (opc == 1 || opc == 3) {
-                monto = Long.valueOf(lcd.getText());
+                monto = Math.abs(Long.valueOf(lcd.getText()));
                 this.socket();
 
                 if (res == 1) {
@@ -248,7 +245,7 @@ public class Cliente extends javax.swing.JFrame  {
                 }
 
             } else if (opc == 4) {
-                monto = Long.valueOf(lcd.getText());
+                monto = Math.abs(Long.valueOf(lcd.getText()));
                 this.socket();
 
                 if (res == 1) {
